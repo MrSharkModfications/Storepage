@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Store - Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('background.jpg'); /* Add your background image URL here */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        nav {
+            background-color: #f4f4f4;
+            padding: 10px;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+        section {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background */
+            border-radius: 10px;
+            margin: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Store</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#" id="view-cart">View Cart</a></li>
+        </ul>
+    </nav>
+    <section>
+        <h2>Welcome to our store!</h2>
+        <p>Hello welcome to The Store.</p>
+    
+    </section>
+    <footer>
+        <p>&copy; 2024 My Store. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        const viewCartButton = document.getElementById('view-cart');
+        const cart = [];
+
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const name = button.getAttribute('data-name');
+                const price = parseFloat(button.getAttribute('data-price'));
+
+                cart.push({ name, price });
+                alert('Item added to cart!');
+            });
+        });
+
+        viewCartButton.addEventListener('click', () => {
+            let cartContent = '<h3>Shopping Cart</h3>';
+
+            if (cart.length === 0) {
+                cartContent += '<p>Your cart is empty.</p>';
+            } else {
+                cartContent += '<ul>';
+                cart.forEach(item => {
+                    cartContent += `<li>${item.name} - $${item.price.toFixed(2)}</li>`;
+                });
+                cartContent += '</ul>';
+            }
+
+            alert(cartContent);
+        });
+    </script>
+</body>
+</html> 
+
